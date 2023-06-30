@@ -6,7 +6,6 @@ data:
   eureka_service_address: http://eureka-0.eureka:8761/eureka
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
@@ -22,7 +21,6 @@ spec:
     app: eureka
 
 ---
-
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
@@ -40,7 +38,7 @@ spec:
     spec:
       containers:
         - name: eureka
-          image: dailycodebuffer/service-registry:0.0.1
+          image: protap/service-registry:0.0.1
           imagePullPolicy: Always
           ports:
             - containerPort: 8761
@@ -51,9 +49,7 @@ spec:
                   name: eureka-cm
                   key: eureka_service_address
 
-
----                  
-
+---
 apiVersion: v1
 kind: Service
 metadata:
